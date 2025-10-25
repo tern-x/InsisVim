@@ -257,7 +257,8 @@ local plugins = {
   -- { "jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim" },
   -- { "jose-elias-alvarez/typescript.nvim" },
   {
-    "pmizio/typescript-tools.nvim",
+    -- "pmizio/typescript-tools.nvim",
+    "Yuki-bun/typescript-tools.nvim",
     config = function()
       require("insis.plugins.typescript-tools")
     end,
