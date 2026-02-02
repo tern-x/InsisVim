@@ -223,10 +223,10 @@ local plugins = {
   { "saadparwaiz1/cmp_luasnip" },
   -- Completion sources
   { "hrsh7th/cmp-vsnip" },
-  { "hrsh7th/cmp-nvim-lsp" }, -- { name = nvim_lsp }
-  { "hrsh7th/cmp-buffer" }, -- { name = 'buffer' },
-  { "hrsh7th/cmp-path" }, -- { name = 'path' }
-  { "hrsh7th/cmp-cmdline" }, -- { name = 'cmdline' }
+  { "hrsh7th/cmp-nvim-lsp" },                -- { name = nvim_lsp }
+  { "hrsh7th/cmp-buffer" },                  -- { name = 'buffer' },
+  { "hrsh7th/cmp-path" },                    -- { name = 'path' }
+  { "hrsh7th/cmp-cmdline" },                 -- { name = 'cmdline' }
   { "hrsh7th/cmp-nvim-lsp-signature-help" }, -- { name = 'nvim_lsp_signature_help' }
   -- common snippets
   { "rafamadriz/friendly-snippets" },
@@ -329,7 +329,7 @@ local plugins = {
   -- go
   { "leoluz/nvim-dap-go" },
 
-  --[[ 
+  --[[
   -- TODO: python not work yet
 
   {
@@ -366,19 +366,19 @@ local plugins = {
       require("insis.plugins.copilot").copilot_cmp()
     end,
   },
-  {
-    "olimorris/codecompanion.nvim",
-    config = function()
-      require("insis.ai.codecompanion.codecompanion")
-    end,
-  },
-  {
-    "ravitemer/mcphub.nvim",
-    build = "pnpm install -g mcp-hub@latest",
-    config = function()
-      require("mcphub").setup()
-    end,
-  },
+  -- {
+  --   "olimorris/codecompanion.nvim",
+  --   config = function()
+  --     require("insis.ai.codecompanion.codecompanion")
+  --   end,
+  -- },
+  -- {
+  --   "ravitemer/mcphub.nvim",
+  --   build = "pnpm install -g mcp-hub@latest",
+  --   config = function()
+  --     require("mcphub").setup()
+  --   end,
+  -- },
   -- {
   --   "CopilotC-Nvim/CopilotChat.nvim",
   --   dependencies = {
@@ -405,7 +405,7 @@ if cfg.rust.enable then
   table.insert(plugins, {
     "mrcjkb/rustaceanvim",
     version = "^5", -- Recommended
-    lazy = false, -- This plugin is already lazy
+    lazy = false,   -- This plugin is already lazy
   })
 end
 

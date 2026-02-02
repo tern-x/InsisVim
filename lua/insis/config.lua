@@ -60,7 +60,7 @@ local InsisUserConfig = {
   keys = {
     leader_key = " ",
     -- quick save / quite
-    n_save = "<leader>w", -- :w
+    n_save = "<leader>w",       -- :w
     n_force_quit = "<leader>q", -- :qa!
     -- quick move
     n_v_5j = "<C-j>",
@@ -199,8 +199,8 @@ local InsisUserConfig = {
       dir_up = "<",
       -- file toggle --
       toggle_git_ignored = "i", --.gitignore (git enable)
-      toggle_dotfiles = ".", -- Hide (dotfiles)
-      toggle_custom = "u", -- togglle custom config
+      toggle_dotfiles = ".",    -- Hide (dotfiles)
+      toggle_custom = "u",      -- togglle custom config
       -- file operate --
       create = "a",
       remove = "d",
@@ -297,7 +297,7 @@ local InsisUserConfig = {
     enable = true,
     -- normal mode
     toggler = {
-      line = "gcc", -- line comment
+      line = "gcc",  -- line comment
       block = "gbc", -- block comment
     },
     -- visual mode
@@ -465,7 +465,7 @@ local InsisUserConfig = {
   ---@field inlay_hint? boolean
   frontend = {
     enable = false,
-    linter = "eslint", -- :EslintFixAll command added
+    linter = "eslint",   -- :EslintFixAll command added
     formatter = "ts_ls", -- if formatter set to eslint,then the linter must be eslint
     format_on_save = false,
     indent = 2,
@@ -500,12 +500,20 @@ local InsisUserConfig = {
   ---@field format_on_save? boolean
   ---@field indent? number
   golang = {
-    enable = false,
+    enable = true,
     lsp = "gopls",
     linter = "golangci-lint",
     formatter = "gofmt",
     format_on_save = false,
     indent = 4,
+  },
+
+  proto = {
+    enable = true,
+    -- 如果需要可以配置 proto 的 LSP，如 bufls
+    -- lsp = "bufls",
+    formatter = "clang-format", -- 使用 clang-format 作为 proto 格式化工具
+    format_on_save = true,      -- 保存时自动格式化
   },
 
   ---@class InsisLuaConfig
@@ -618,8 +626,8 @@ local InsisUserConfig = {
       follow_link = "gd",
       toggle_item = "tt",
     },
-    formatter = "prettier",
-    format_on_save = false,
+    -- formatter = "prettier",
+    format_on_save = true,
     wrap = true,
     ---@type "dark" | "light"
     theme = "dark",
@@ -691,10 +699,10 @@ local InsisUserConfig = {
     enable = true,
     code_actions = "gitsigns",
     -- sign display
-    signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-    numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
-    linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
-    word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
+    signcolumn = true,          -- Toggle with `:Gitsigns toggle_signs`
+    numhl = false,              -- Toggle with `:Gitsigns toggle_numhl`
+    linehl = false,             -- Toggle with `:Gitsigns toggle_linehl`
+    word_diff = false,          -- Toggle with `:Gitsigns toggle_word_diff`
     current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
   },
 
