@@ -8,7 +8,7 @@
 -- getNulllsSources
 -- getNeotestAdapters
 
---[[ 
+--[[
 
 Empty Env template
 
@@ -59,6 +59,9 @@ local init = function(userConfig)
   end
   if userConfig.golang.enable then
     table.insert(enabledEnv, require("insis.env.golang")(userConfig.golang))
+  end
+  if userConfig.proto.enable then
+    table.insert(enabledEnv, require("insis.env.proto")(userConfig.proto))
   end
   if userConfig.clangd.enable then
     table.insert(enabledEnv, require("insis.env.clangd")(userConfig.clangd))

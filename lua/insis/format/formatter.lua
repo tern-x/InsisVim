@@ -40,6 +40,16 @@ formatter.setup({
         }
       end,
     },
+    proto = {
+      function()
+        return {
+          exe = "buf",                            -- 或 clang-format
+          args = { "format", "-w", "$FILENAME" }, -- buf 格式化参数
+          -- args = { "--style=Google", "-i", "$FILENAME" }, -- clang-format 参数
+          stdin = false,
+        }
+      end,
+    },
   },
 })
 
@@ -48,7 +58,7 @@ vim.api.nvim_exec(
   [[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *.js,*.rs,*.lua FormatWrite
+  autocmd BufWritePost *.js,*.rs,*.lua,*.proto FormatWrite
 augroup END
 ]],
   true

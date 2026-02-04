@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+import "pb/duck/mongodb/ObjectID.proto";
+
+message ChatMessage {
+    int64 ReceiverId = 1;
+    string Content = 2;
+}
+
+message GetHistoryReq {
+    int64 ReceiverId = 1;
+}
+
+message MessageInfo {
+    ObjectID ID = 1;        //@gotags:bson:"_id"
+    int64 SenderID = 2;     // 发送者
+    int64 ReceiverID = 3;   // 接收者
+    string Content = 4;     // 聊天内容
+    int64 CurrentUnix = 5;  // 创建时间
+}
+
+message GetHistoryResp {
+    int64 Total = 1;
+    repeated MessageInfo List = 2;
+}
+
+// @ts: prefix(chat)
+service APIChatServer {
+    // 网关收到客户端消息后调用
+    rpc HandleMessage(ChatMessage) returns (MessageInfo);
+
+    // 获取聊天历史记录
+    rpc GetHistory(GetHistoryReq) returns (GetHistoryResp);
+}

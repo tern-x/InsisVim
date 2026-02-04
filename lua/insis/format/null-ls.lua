@@ -7,14 +7,21 @@ end
 null_ls.setup({
   debug = false,
   sources = require("insis.env").getNulllsSources(),
-  -- #{m}: message
-  -- #{s}: source name (defaults to null-ls if not specified)
-  -- #{c}: code (if available)
   diagnostics_format = "[#{s}] #{m}",
-  on_attach = function(_)
-    -- vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()']])
-    -- if client.resolved_capabilities.document_formatting then
-    --   vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
-    -- end
+  on_attach = function(client, bufnr)
+    if vim.bo[bufnr].filetype == "proto" then
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = bufnr,
+        callback = function()
+          vim.lsp.buf.format({
+            async = false,
+            filter = function(c)
+              return c.name == "null-ls" -- 仅调用 null-ls 格式化
+            end,
+          })
+        end,
+        desc = "Auto format proto file on save",
+      })
+    end
   end,
 })

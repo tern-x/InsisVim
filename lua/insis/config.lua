@@ -40,6 +40,7 @@
 ---@field sql? InsisSQLConfig
 ---@field git? InsisGitConfig git user config
 ---@field mirror? InsisMirrorConfig mirror config
+---@field proto? InsisProtoConfig Proto development user config
 local InsisUserConfig = {
 
   colorscheme = "tokyonight",
@@ -142,7 +143,7 @@ local InsisUserConfig = {
   ---@field codeium? boolean
   ---@field keys? {confirm:string, select_next_item:string, select_prev_item:string, scroll_doc_up:string, scroll_doc_down:string, complete:string, abort:string, snip_jump_next:string, snip_jump_prev:string, snip_next_choice:string, snip_prev_choice:string}
   cmp = {
-    enable = true,
+    enable = false,
     -- enable copilot cmp
     copilot = false,
     -- run ':Copilot auth' for the first time
@@ -504,16 +505,23 @@ local InsisUserConfig = {
     lsp = "gopls",
     linter = "golangci-lint",
     formatter = "gofmt",
-    format_on_save = false,
+    format_on_save = true,
     indent = 4,
   },
 
+  ---@class InsisProtoConfig
+  ---@field enable? boolean
+  ---@field lsp? string
+  ---@field formatter? string
+  ---@field format_on_save? boolean
+  ---@field indent? number
   proto = {
     enable = true,
-    -- 如果需要可以配置 proto 的 LSP，如 bufls
-    -- lsp = "bufls",
-    formatter = "clang-format", -- 使用 clang-format 作为 proto 格式化工具
-    format_on_save = true,      -- 保存时自动格式化
+    lsp = "buf_ls",
+    formatter = "clang-format",
+    linter = "buf",
+    format_on_save = true, -- 可选：开启保存自动格式化
+    indent = 4,
   },
 
   ---@class InsisLuaConfig
